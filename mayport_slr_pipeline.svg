@@ -1,0 +1,92 @@
+<svg width="820" height="620" viewBox="0 0 820 620" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#854F0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrow-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#993C1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<style>
+  text { font-family: -apple-system, Helvetica, Arial, sans-serif; }
+  .box { fill: #F1EFE8; stroke: #5F5E5A; stroke-width: 1; rx: 8; }
+  .box-teal { fill: #E1F5EE; stroke: #0F6E56; stroke-width: 1; rx: 8; }
+  .box-amber { fill: #FAEEDA; stroke: #854F0B; stroke-width: 1; rx: 8; }
+  .box-coral { fill: #FAECE7; stroke: #993C1D; stroke-width: 1; rx: 8; }
+  .title { font-size: 14px; font-weight: 600; fill: #2C2C2A; }
+  .title-teal { font-size: 14px; font-weight: 600; fill: #085041; }
+  .title-amber { font-size: 14px; font-weight: 600; fill: #633806; }
+  .title-coral { font-size: 14px; font-weight: 600; fill: #712B13; }
+  .sub { font-size: 11.5px; fill: #444441; }
+  .sub-teal { font-size: 11.5px; fill: #0F6E56; }
+  .sub-amber { font-size: 11.5px; fill: #854F0B; }
+  .sub-coral { font-size: 11.5px; fill: #993C1D; }
+  .section { font-size: 12px; font-weight: 600; fill: #888780; letter-spacing: 0.5px; }
+</style>
+
+<text x="30" y="28" class="section">MAYPORT SEA LEVEL RISE — ARCGIS PIPELINE</text>
+
+<!-- 1. LiDAR processing -->
+<rect x="250" y="50" width="280" height="70" class="box"/>
+<text x="390" y="72" text-anchor="middle" class="title">LiDAR processing</text>
+<text x="390" y="90" text-anchor="middle" class="sub">LAZ → LAS, ground classification,</text>
+<text x="390" y="104" text-anchor="middle" class="sub">DEM built in NAD83 UTM 17N</text>
+
+<line x1="390" y1="120" x2="390" y2="156" stroke="#0F6E56" stroke-width="1" marker-end="url(#arrow-teal)"/>
+
+<!-- 2. Bathtub flood model -->
+<rect x="250" y="156" width="280" height="70" class="box-teal"/>
+<text x="390" y="178" text-anchor="middle" class="title-teal">Bathtub flood model</text>
+<text x="390" y="196" text-anchor="middle" class="sub-teal">depth = scenario elevation − DEM,</text>
+<text x="390" y="210" text-anchor="middle" class="sub-teal">masked to flooded cells only</text>
+
+<line x1="390" y1="226" x2="390" y2="262" stroke="#0F6E56" stroke-width="1" marker-end="url(#arrow-teal)"/>
+
+<!-- 3. Scenario configuration -->
+<rect x="250" y="262" width="280" height="70" class="box-teal"/>
+<text x="390" y="284" text-anchor="middle" class="title-teal">Scenario configuration</text>
+<text x="390" y="302" text-anchor="middle" class="sub-teal">SLR + site adjustment + MHHW offset</text>
+<text x="390" y="316" text-anchor="middle" class="sub-teal">+ storm surge, per documented formula</text>
+
+<line x1="390" y1="332" x2="390" y2="368" stroke="#5F5E5A" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- 4. Layout automation -->
+<rect x="250" y="368" width="280" height="70" class="box"/>
+<text x="390" y="390" text-anchor="middle" class="title">ArcGIS Pro layout automation</text>
+<text x="390" y="408" text-anchor="middle" class="sub">reprojects to Web Mercator, clones</text>
+<text x="390" y="422" text-anchor="middle" class="sub">layouts and AOI bookmarks per scenario</text>
+
+<!-- Branch down then out -->
+<path d="M390 438 L390 456 L210 456 L210 476" fill="none" stroke="#854F0B" stroke-width="1" marker-end="url(#arrow-amber)"/>
+<path d="M390 438 L390 456 L610 456 L610 476" fill="none" stroke="#993C1D" stroke-width="1" marker-end="url(#arrow-coral)"/>
+
+<!-- 5a. Map packages -->
+<rect x="40" y="476" width="340" height="66" class="box-amber"/>
+<text x="210" y="498" text-anchor="middle" class="title-amber">Map tile packages</text>
+<text x="210" y="516" text-anchor="middle" class="sub-amber">per-scenario layouts packaged for</text>
+<text x="210" y="530" text-anchor="middle" class="sub-amber">offline delivery and print</text>
+
+<line x1="210" y1="542" x2="210" y2="566" stroke="#854F0B" stroke-width="1" marker-end="url(#arrow-amber)"/>
+
+<rect x="40" y="566" width="340" height="40" class="box-amber"/>
+<text x="210" y="590" text-anchor="middle" class="title-amber" font-size="13px">Stakeholder map deliverables</text>
+
+<!-- 5b. Web scene publishing -->
+<rect x="440" y="476" width="340" height="66" class="box-coral"/>
+<text x="610" y="498" text-anchor="middle" class="title-coral">ArcGIS Online publishing</text>
+<text x="610" y="516" text-anchor="middle" class="sub-coral">tile service + 3D web scene built</text>
+<text x="610" y="530" text-anchor="middle" class="sub-coral">from the reprojected depth rasters</text>
+
+<line x1="610" y1="542" x2="610" y2="566" stroke="#993C1D" stroke-width="1" marker-end="url(#arrow-coral)"/>
+
+<rect x="440" y="566" width="340" height="40" class="box-coral"/>
+<text x="610" y="590" text-anchor="middle" class="title-coral" font-size="13px">Interactive 3D flood web scene</text>
+
+</svg>

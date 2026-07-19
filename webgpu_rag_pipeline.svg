@@ -1,0 +1,92 @@
+<svg width="820" height="620" viewBox="0 0 820 620" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#854F0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrow-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#993C1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<style>
+  text { font-family: -apple-system, Helvetica, Arial, sans-serif; }
+  .box { fill: #F1EFE8; stroke: #5F5E5A; stroke-width: 1; rx: 8; }
+  .box-teal { fill: #E1F5EE; stroke: #0F6E56; stroke-width: 1; rx: 8; }
+  .box-amber { fill: #FAEEDA; stroke: #854F0B; stroke-width: 1; rx: 8; }
+  .box-coral { fill: #FAECE7; stroke: #993C1D; stroke-width: 1; rx: 8; }
+  .title { font-size: 14px; font-weight: 600; fill: #2C2C2A; }
+  .title-teal { font-size: 14px; font-weight: 600; fill: #085041; }
+  .title-amber { font-size: 14px; font-weight: 600; fill: #633806; }
+  .title-coral { font-size: 14px; font-weight: 600; fill: #712B13; }
+  .sub { font-size: 11.5px; fill: #444441; }
+  .sub-teal { font-size: 11.5px; fill: #0F6E56; }
+  .sub-amber { font-size: 11.5px; fill: #854F0B; }
+  .sub-coral { font-size: 11.5px; fill: #993C1D; }
+  .section { font-size: 12px; font-weight: 600; fill: #888780; letter-spacing: 0.5px; }
+  .note { font-size: 11px; fill: #888780; font-style: italic; }
+</style>
+
+<text x="30" y="28" class="section">WEBGPU RAG PROTOTYPE — ALL IN-BROWSER, NO BACKEND</text>
+
+<!-- 1. File intake -->
+<rect x="250" y="50" width="280" height="60" class="box"/>
+<text x="390" y="72" text-anchor="middle" class="title">File intake</text>
+<text x="390" y="90" text-anchor="middle" class="sub">PDF, text, code, and zip archives</text>
+
+<line x1="390" y1="110" x2="390" y2="146" stroke="#5F5E5A" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- 2. Chunking -->
+<rect x="250" y="146" width="280" height="60" class="box"/>
+<text x="390" y="168" text-anchor="middle" class="title">Chunking</text>
+<text x="390" y="186" text-anchor="middle" class="sub">boundary-aware split with overlap</text>
+
+<line x1="390" y1="206" x2="390" y2="242" stroke="#0F6E56" stroke-width="1" marker-end="url(#arrow-teal)"/>
+
+<!-- 3. Web Worker embedding index -->
+<rect x="250" y="242" width="280" height="70" class="box-teal"/>
+<text x="390" y="264" text-anchor="middle" class="title-teal">Embedding index (Web Worker)</text>
+<text x="390" y="282" text-anchor="middle" class="sub-teal">TF-IDF hashed tokenizer runs off the</text>
+<text x="390" y="296" text-anchor="middle" class="sub-teal">main thread — UI stays responsive</text>
+
+<line x1="390" y1="312" x2="390" y2="348" stroke="#0F6E56" stroke-width="1" marker-end="url(#arrow-teal)"/>
+
+<!-- 4. RAG engine -->
+<rect x="250" y="348" width="280" height="60" class="box-teal"/>
+<text x="390" y="370" text-anchor="middle" class="title-teal">RAG retrieval engine</text>
+<text x="390" y="388" text-anchor="middle" class="sub-teal">ranks chunks by vector similarity to query</text>
+
+<!-- Branch down then out -->
+<path d="M390 408 L390 426 L210 426 L210 446" fill="none" stroke="#854F0B" stroke-width="1" marker-end="url(#arrow-amber)"/>
+<path d="M390 408 L390 426 L610 426 L610 446" fill="none" stroke="#993C1D" stroke-width="1" marker-end="url(#arrow-coral)"/>
+
+<!-- 5a. Knowledge graph -->
+<rect x="40" y="446" width="340" height="66" class="box-amber"/>
+<text x="210" y="468" text-anchor="middle" class="title-amber">Knowledge graph builder</text>
+<text x="210" y="486" text-anchor="middle" class="sub-amber">term co-occurrence graph rendered</text>
+<text x="210" y="500" text-anchor="middle" class="sub-amber">with a force-directed layout</text>
+
+<line x1="210" y1="512" x2="210" y2="536" stroke="#854F0B" stroke-width="1" marker-end="url(#arrow-amber)"/>
+
+<rect x="40" y="536" width="340" height="40" class="box-amber"/>
+<text x="210" y="560" text-anchor="middle" class="title-amber" font-size="13px">Interactive graph view</text>
+
+<!-- 5b. Answer generation -->
+<rect x="440" y="446" width="340" height="66" class="box-coral"/>
+<text x="610" y="468" text-anchor="middle" class="title-coral">Answer generation</text>
+<text x="610" y="486" text-anchor="middle" class="sub-coral">in-browser LLM (WebGPU) with an</text>
+<text x="610" y="500" text-anchor="middle" class="sub-coral">extractive fallback if it's unavailable</text>
+
+<line x1="610" y1="512" x2="610" y2="536" stroke="#993C1D" stroke-width="1" marker-end="url(#arrow-coral)"/>
+
+<rect x="440" y="536" width="340" height="40" class="box-coral"/>
+<text x="610" y="560" text-anchor="middle" class="title-coral" font-size="13px">Synthesized answer with citations</text>
+
+<text x="390" y="600" text-anchor="middle" class="note">No server calls — indexing and inference happen entirely on-device</text>
+
+</svg>
