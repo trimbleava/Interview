@@ -117,6 +117,8 @@ analysis — built to support NEPA-style airspace impact assessments.
 | FastAPI web framework | Routers cleanly separated by domain (airspaces, flights, viewer), each mounted under its own API prefix |
 | ArcGIS / geospatial data integration (preferred) | Shapely-based 3D geometric intersection engine handling real airspace volumes (lateral polygon + altitude band), not just 2D point-in-polygon |
 
+<img src="ASTRA/astra_ui.png" alt="Airspace Impact Analysis Platform UI" width="80%" height="auto">
+
 ### Describe your experience with service-oriented architecture / microservices
 
 **TerraNexus platform** *(see [architecture diagram & README](#terranexus-platform-diagram))*
