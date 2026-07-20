@@ -52,7 +52,7 @@ ArcGIS: Experience working with ArcGIS mapping software and geospatial data inte
 
 ## 1. Frame yourself in one line
 
-I'm a full-stack/backend engineer with deep experience building FastAPI and Django services for federal geospatial platforms — including message-queue-driven data pipelines (Kafka), PostgreSQL/PostGIS, [MCP server integrations](#what-is-mcp-server), and AI-integrated features — plus hands-on ArcGIS/ArcPy background
+I'm a full-stack/backend engineer with deep experience building FastAPI and Django services for federal geospatial platforms — including message-queue-driven data pipelines (Kafka), PostgreSQL/PostGIS, MCP server integrations, and AI-integrated features — plus hands-on ArcGIS/ArcPy background
 
 
 ## 2. Backend system with high-throughput or large data volumes.
