@@ -1,0 +1,79 @@
+<svg width="820" height="600" viewBox="0 0 820 600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<style>
+  text { font-family: -apple-system, Helvetica, Arial, sans-serif; }
+  .box { fill: #F1EFE8; stroke: #5F5E5A; stroke-width: 1; rx: 8; }
+  .box-teal { fill: #E1F5EE; stroke: #0F6E56; stroke-width: 1; rx: 8; }
+  .box-amber { fill: #FAEEDA; stroke: #854F0B; stroke-width: 1; rx: 8; }
+  .title { font-size: 14px; font-weight: 600; fill: #2C2C2A; }
+  .title-teal { font-size: 14px; font-weight: 600; fill: #085041; }
+  .title-amber { font-size: 14px; font-weight: 600; fill: #633806; }
+  .sub { font-size: 11.5px; fill: #444441; }
+  .sub-teal { font-size: 11.5px; fill: #0F6E56; }
+  .sub-amber { font-size: 11.5px; fill: #854F0B; }
+  .section { font-size: 12px; font-weight: 600; fill: #888780; letter-spacing: 0.5px; }
+</style>
+
+<text x="30" y="28" class="section">MULTI-TENANT LEAK SURVEY MAPPING — REAL-TIME WORKFLOW</text>
+
+<!-- 1. WebSocket client -->
+<rect x="250" y="50" width="280" height="56" class="box"/>
+<text x="390" y="72" text-anchor="middle" class="title">WebSocket client</text>
+<text x="390" y="90" text-anchor="middle" class="sub">opens a persistent connection per survey job</text>
+
+<line x1="390" y1="106" x2="390" y2="140" stroke="#5F5E5A" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- 2. Django Channels router -->
+<rect x="250" y="140" width="280" height="56" class="box"/>
+<text x="390" y="162" text-anchor="middle" class="title">Django Channels (ASGI)</text>
+<text x="390" y="180" text-anchor="middle" class="sub">routes to a consumer per workflow type</text>
+
+<line x1="390" y1="196" x2="390" y2="230" stroke="#0F6E56" stroke-width="1" marker-end="url(#arrow-teal)"/>
+
+<!-- 3. Tenant activation -->
+<rect x="250" y="230" width="280" height="70" class="box-teal"/>
+<text x="390" y="252" text-anchor="middle" class="title-teal">Tenant activation</text>
+<text x="390" y="270" text-anchor="middle" class="sub-teal">slug-based lookup loads the correct</text>
+<text x="390" y="284" text-anchor="middle" class="sub-teal">utility company's config and SLD styles</text>
+
+<line x1="390" y1="300" x2="390" y2="334" stroke="#0F6E56" stroke-width="1" marker-end="url(#arrow-teal)"/>
+
+<!-- 4. Redis-backed session -->
+<rect x="250" y="334" width="280" height="70" class="box-teal"/>
+<text x="390" y="356" text-anchor="middle" class="title-teal">Redis-backed session</text>
+<text x="390" y="374" text-anchor="middle" class="sub-teal">tenant, region, and survey state persist</text>
+<text x="390" y="388" text-anchor="middle" class="sub-teal">in Redis across the multi-step workflow</text>
+
+<line x1="390" y1="404" x2="390" y2="438" stroke="#5F5E5A" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- 5. Survey/overlay generation engine -->
+<rect x="250" y="438" width="280" height="70" class="box"/>
+<text x="390" y="460" text-anchor="middle" class="title">Survey/overlay engine</text>
+<text x="390" y="478" text-anchor="middle" class="sub">GeoServer SLD styling + GIS/ETL engine,</text>
+<text x="390" y="492" text-anchor="middle" class="sub">progress streamed back over the socket</text>
+
+<!-- Side: cache backend -->
+<rect x="580" y="140" width="200" height="90" class="box-amber"/>
+<text x="680" y="162" text-anchor="middle" class="title-amber">Redis cache backend</text>
+<text x="680" y="180" text-anchor="middle" class="sub-amber">django-redis is the session's</text>
+<text x="680" y="194" text-anchor="middle" class="sub-amber">actual storage — sessions live</text>
+<text x="680" y="208" text-anchor="middle" class="sub-amber">entirely in Redis, not the DB</text>
+<line x1="580" y1="185" x2="532" y2="230" stroke="#854F0B" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+
+<!-- Side: channel layer -->
+<rect x="580" y="334" width="200" height="90" class="box-amber"/>
+<text x="680" y="356" text-anchor="middle" class="title-amber">Channel layer (Redis)</text>
+<text x="680" y="374" text-anchor="middle" class="sub-amber">channels-redis is a dependency</text>
+<text x="680" y="388" text-anchor="middle" class="sub-amber">for scaling WS groups across</text>
+<text x="680" y="402" text-anchor="middle" class="sub-amber">workers — config currently disabled</text>
+<line x1="580" y1="379" x2="532" y2="369" stroke="#854F0B" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+
+</svg>
